@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
 const todos = function(
-	state = [{ id: 1, text: "todo default", completed: "false" }],
+	state = [{ id: 1, text: "todo default", completed: false }],
 	action
 ) {
 	if (action.type === "add_todo") {
