@@ -10,7 +10,18 @@ const middleware = [];
 
 if (process.env.NODE_ENV !== "production") middleware.push(createLogger());
 
-const store = createStore(reducer, applyMiddleware(...middleware));
+const defaultState = [{ text: "todo default", completed: false }];
+
+let localTodos = JSON.parse(localStorage.getItem("todos"));
+if (localTodos == null) localTodos = defaultState;
+const store = createStore(
+	reducer,
+	{ todos: localTodos },
+	applyMiddleware(...middleware)
+);
+store.subscribe(() => {
+	localStorage.setItem("todos", JSON.stringify(store.getState().todos));
+});
 
 class App extends Component {
 	render() {

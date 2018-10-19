@@ -1,9 +1,6 @@
 import { combineReducers } from "redux";
 
-const todos = function(
-	state = [{ id: 1, text: "todo default", completed: false }],
-	action
-) {
+const todos = function(state = [], action) {
 	if (action.type === "add_todo") {
 		return [
 			...state,
@@ -21,6 +18,7 @@ const todos = function(
 					: todo
 		);
 	}
+
 	return state;
 };
 

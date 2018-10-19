@@ -8,10 +8,16 @@ class Todo extends Component {
 	render() {
 		return (
 			<div>
-				<p>
-					{this.props.text} - {this.props.completed ? "fait" : "A faire"}
+				<p
+					style={
+						this.props.completed
+							? { backgroundColor: "grey" }
+							: { backgroundColor: "white" }
+					}
+				>
+					{this.props.text}
 					<button onClick={this.handleClick.bind(this)}>
-						{this.props.completed ? "fait" : "A faire"}
+						{this.props.completed ? "A faire" : "fait"}
 					</button>
 				</p>
 			</div>
